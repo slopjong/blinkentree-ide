@@ -105,14 +105,23 @@ int main(int argc, char *argv[])
 	try {
 		//QApplication::setGraphicsSystem("raster");
 		FApplication * app = new FApplication(argc, argv);
+
+        // Slopjong: init() returns false if -h or --help are passed to the application
 		if (app->init()) {
 			//DebugDialog::setDebugLevel(DebugDialog::Error);
 			bool firstRun = true;
-			if (app->runAsService()) {
+
+            ////////////////////////////////////////////////////////////////////////////
+            // SLOPJONG TODO: cleanup
+
+            //if (app->runAsService()) {
 				// for example: -g C:\Users\jonathan\fritzing2\fz\Test_multiple.fz -go C:\Users\jonathan\fritzing2\fz\gerber
-				result = app->serviceStartup();
-			}
-			else {
+
+                ////////////////////////////////////////////////////////////////////////////
+                // SLOPJONG TODO: cleanup
+                // result = app->serviceStartup();
+            //}
+            //else {
 				do {
 					result = app->startup(firstRun);
 					if (result == 0) {
@@ -120,7 +129,7 @@ int main(int argc, char *argv[])
 						firstRun = false;
 					}
 				} while(result == FApplication::RestartNeeded);
-			}
+            //}
 			app->finish();
 		}
 		else {

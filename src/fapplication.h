@@ -49,8 +49,12 @@ public:
 public:
 	bool init();
 	int startup(bool firstRun);
-	int serviceStartup();
-	void finish();
+
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    //int serviceStartup();
+
+    void finish();
 	class ReferenceModel * loadReferenceModel();
 	void registerFonts();
 	bool loadBin(QString binToOpen);
@@ -58,7 +62,10 @@ public:
 
 public:
 	static bool spaceBarIsPressed();
-	static bool runAsService();
+
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    //static bool runAsService();
 
 signals:
 	void spaceBarIsPressedSignal(bool);
@@ -93,7 +100,7 @@ protected:
 	void runKicadSchematicService();
 	void runGerberService();
 	void runPanelizerService();
-	void runInscriptionService();
+    void runInscriptionService();
 	QList<class MainWindow *> recoverBackups();
 	QList<MainWindow *> loadLastOpenSketch();
 	void doLoadPrevious(MainWindow *);
@@ -105,6 +112,9 @@ protected:
 	void updatePrefs(class PrefsDialog & prefsDialog);
         QList<MainWindow *> orderedTopLevelMainWindows();
 
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    /*
 	enum ServiceType {
 		PanelizerService = 1,
 		InscriptionService,
@@ -114,6 +124,7 @@ protected:
 		KicadFootprintService,
 		NoService
 	};
+    */
 
 protected:
 	bool m_spaceBarIsPressed;
@@ -133,7 +144,11 @@ protected:
 	QStringList m_externalProcessArgs;
 	QString m_externalProcessName;
 	QString m_externalProcessPath;
-	ServiceType m_serviceType;
+
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    //ServiceType m_serviceType;
+
 	int m_progressIndex;
 	class FSplashScreen * m_splash;
 	QString m_outputFolder;

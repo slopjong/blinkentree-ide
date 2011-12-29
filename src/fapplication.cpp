@@ -127,19 +127,28 @@ FApplication::FApplication( int & argc, char ** argv) : QApplication(argc, argv)
 	m_started = false;
 	m_updateDialog = NULL;
 	m_lastTopmostWindow = NULL;
-	m_serviceType = NoService;
+
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    //m_serviceType = NoService;
+
 	m_splash = NULL;
 
 	m_arguments = arguments();
 }
 
+/**
+ *
+ */
 bool FApplication::init() {
 
 	//foreach (QString argument, m_arguments) {
 		//DebugDialog::debug(QString("argument %1").arg(argument));
 	//}
 
-	m_serviceType = NoService;
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    // m_serviceType = NoService;
 
 	QList<int> toRemove;
 	for (int i = 0; i < m_arguments.length(); i++) {
@@ -161,6 +170,9 @@ bool FApplication::init() {
 			toRemove << i << i + 1;
 		}
 
+        ////////////////////////////////////////////////////////////////////////////
+        // SLOPJONG TODO: cleanup
+        /*
 		if ((m_arguments[i].compare("-geda", Qt::CaseInsensitive) == 0) ||
 			(m_arguments[i].compare("--geda", Qt::CaseInsensitive) == 0)) {
 			m_serviceType = GedaService;
@@ -207,6 +219,7 @@ bool FApplication::init() {
 			m_outputFolder = " ";					// otherwise program will bail out
 			toRemove << i << i + 1;
 		}
+        */
 
 		if (m_arguments[i].compare("-ep", Qt::CaseInsensitive) == 0) {
 			m_externalProcessPath = m_arguments[i + 1];
@@ -464,6 +477,9 @@ MainWindow * FApplication::loadWindows(int & loaded) {
 	return mainWindow;
 }
 
+////////////////////////////////////////////////////////////////////////////
+// SLOPJONG TODO: cleanup
+/*
 int FApplication::serviceStartup() {
 
 	if (m_outputFolder.isEmpty()) {
@@ -500,6 +516,8 @@ int FApplication::serviceStartup() {
 			return -1;
 	}
 }
+*/
+////////////////////////////////////////////////////////////////////////////
 
 
 void FApplication::runGerberService()
@@ -1139,9 +1157,14 @@ which is really not intended for hundreds of widgets.
 
 }
 
+////////////////////////////////////////////////////////////////////////////
+// SLOPJONG TODO: cleanup
+/*
 bool FApplication::runAsService() {
 	return ((FApplication *) qApp)->m_serviceType != NoService;
 }
+*/
+
 
 void FApplication::loadedPart(int loaded, int total) {
 	if (total == 0) return;
