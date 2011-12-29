@@ -108,36 +108,9 @@ int main(int argc, char *argv[])
 
         // Slopjong: init() returns false if -h or --help are passed to the application
 		if (app->init()) {
-			//DebugDialog::setDebugLevel(DebugDialog::Error);
 
-            ////////////////////////////////////////////////////////////////////////////
-            // SLOPJONG TODO: cleanup
-            //bool firstRun = true;
-
-            ////////////////////////////////////////////////////////////////////////////
-            // SLOPJONG TODO: cleanup
-
-            //if (app->runAsService()) {
-				// for example: -g C:\Users\jonathan\fritzing2\fz\Test_multiple.fz -go C:\Users\jonathan\fritzing2\fz\gerber
-
-                ////////////////////////////////////////////////////////////////////////////
-                // SLOPJONG TODO: cleanup
-                // result = app->serviceStartup();
-            //}
-            //else {
-                //do {
-                    ////////////////////////////////////////////////////////////////////////////
-                    // SLOPJONG TODO: cleanup
-                    result = app->startup(/*firstRun*/);
-                    //if (result == 0) {
-						result = app->exec();
-
-                        ////////////////////////////////////////////////////////////////////////////
-                        // SLOPJONG TODO: cleanup
-                        //firstRun = false;
-                    //}
-                //} while(result == FApplication::RestartNeeded);
-            //}
+            result = app->startup();
+            result = app->exec();
 			app->finish();
 		}
 		else {

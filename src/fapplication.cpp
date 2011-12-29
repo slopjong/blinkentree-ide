@@ -127,13 +127,7 @@ FApplication::FApplication( int & argc, char ** argv) : QApplication(argc, argv)
 	m_started = false;
 	m_updateDialog = NULL;
 	m_lastTopmostWindow = NULL;
-
-    ////////////////////////////////////////////////////////////////////////////
-    // SLOPJONG TODO: cleanup
-    //m_serviceType = NoService;
-
 	m_splash = NULL;
-
 	m_arguments = arguments();
 }
 
@@ -145,10 +139,6 @@ bool FApplication::init() {
 	//foreach (QString argument, m_arguments) {
 		//DebugDialog::debug(QString("argument %1").arg(argument));
 	//}
-
-    ////////////////////////////////////////////////////////////////////////////
-    // SLOPJONG TODO: cleanup
-    // m_serviceType = NoService;
 
 	QList<int> toRemove;
 	for (int i = 0; i < m_arguments.length(); i++) {
@@ -169,57 +159,6 @@ bool FApplication::init() {
 			// delete these so we don't try to process them as files later
 			toRemove << i << i + 1;
 		}
-
-        ////////////////////////////////////////////////////////////////////////////
-        // SLOPJONG TODO: cleanup
-        /*
-		if ((m_arguments[i].compare("-geda", Qt::CaseInsensitive) == 0) ||
-			(m_arguments[i].compare("--geda", Qt::CaseInsensitive) == 0)) {
-			m_serviceType = GedaService;
-			m_outputFolder = m_arguments[i + 1];
-			toRemove << i << i + 1;
-		}
-
-		if ((m_arguments[i].compare("-kicad", Qt::CaseInsensitive) == 0) ||
-			(m_arguments[i].compare("--kicad", Qt::CaseInsensitive) == 0)) {
-			m_serviceType = KicadFootprintService;
-			m_outputFolder = m_arguments[i + 1];
-			toRemove << i << i + 1;
-		}
-
-		if ((m_arguments[i].compare("-kicadschematic", Qt::CaseInsensitive) == 0) ||
-			(m_arguments[i].compare("--kicadschematic", Qt::CaseInsensitive) == 0)) {
-			m_serviceType = KicadSchematicService;
-			m_outputFolder = m_arguments[i + 1];
-			toRemove << i << i + 1;
-		}
-
-		if ((m_arguments[i].compare("-g", Qt::CaseInsensitive) == 0) ||
-			(m_arguments[i].compare("-gerber", Qt::CaseInsensitive) == 0)||
-			(m_arguments[i].compare("--gerber", Qt::CaseInsensitive) == 0)) {
-			m_serviceType = GerberService;
-			m_outputFolder = m_arguments[i + 1];
-			toRemove << i << i + 1;
-		}
-
-		if ((m_arguments[i].compare("-p", Qt::CaseInsensitive) == 0) ||
-			(m_arguments[i].compare("-panel", Qt::CaseInsensitive) == 0)||
-			(m_arguments[i].compare("--panel", Qt::CaseInsensitive) == 0)) {
-			m_serviceType = PanelizerService;
-			m_panelFilename = m_arguments[i + 1];
-			m_outputFolder = " ";					// otherwise program will bail out
-			toRemove << i << i + 1;
-		}
-
-		if ((m_arguments[i].compare("-i", Qt::CaseInsensitive) == 0) ||
-			(m_arguments[i].compare("-inscription", Qt::CaseInsensitive) == 0)||
-			(m_arguments[i].compare("--inscription", Qt::CaseInsensitive) == 0)) {
-			m_serviceType = InscriptionService;
-			m_panelFilename = m_arguments[i + 1];
-			m_outputFolder = " ";					// otherwise program will bail out
-			toRemove << i << i + 1;
-		}
-        */
 
 		if (m_arguments[i].compare("-ep", Qt::CaseInsensitive) == 0) {
 			m_externalProcessPath = m_arguments[i + 1];
@@ -477,49 +416,6 @@ MainWindow * FApplication::loadWindows(int & loaded) {
 	return mainWindow;
 }
 
-////////////////////////////////////////////////////////////////////////////
-// SLOPJONG TODO: cleanup
-/*
-int FApplication::serviceStartup() {
-
-	if (m_outputFolder.isEmpty()) {
-		return -1;
-	}
-
-	switch (m_serviceType) {
-		case GedaService:
-			runGedaService();
-			return 0;
-	
-		case KicadFootprintService:
-			runKicadFootprintService();
-			return 0;
-
-		case KicadSchematicService:
-			runKicadSchematicService();
-			return 0;
-
-		case GerberService:
-			runGerberService();
-			return 0;
-
-		case PanelizerService:
-			runPanelizerService();
-			return 0;
-
-		case InscriptionService:
-			runInscriptionService();
-			return 0;
-
-		default:
-			DebugDialog::debug("unknown service");
-			return -1;
-	}
-}
-*/
-////////////////////////////////////////////////////////////////////////////
-
-
 void FApplication::runGerberService()
 {
 	createUserDataStoreFolderStructure();
@@ -669,9 +565,7 @@ void FApplication::runKicadSchematicService() {
 	}
 }
 
-////////////////////////////////////////////////////////////////////////////
-// SLOPJONG TODO: cleanup
-int FApplication::startup(/*bool firstRun*/)
+int FApplication::startup()
 {
 	QPixmap pixmap(":/resources/images/splash/splash_screen_start.png");
 	FSplashScreen splash(pixmap);
@@ -683,40 +577,26 @@ int FApplication::startup(/*bool firstRun*/)
 
 	// DebugDialog::debug("Data Location: "+QDesktopServices::storageLocation(QDesktopServices::DataLocation));
 
-    ////////////////////////////////////////////////////////////////////////////
-    // SLOPJONG TODO: cleanup
-    //if(firstRun) {
-		registerFonts();
+    registerFonts();
 
-		if (m_progressIndex >= 0) splash.showProgress(m_progressIndex, LoadProgressStart);
-		ProcessEventBlocker::processEvents();
+    if (m_progressIndex >= 0) splash.showProgress(m_progressIndex, LoadProgressStart);
+    ProcessEventBlocker::processEvents();
 
-		#ifdef Q_WS_WIN
-			// associate .fz file with fritzing app on windows (xp only--vista is different)
-			// TODO: don't change settings if they're already set?
-			// TODO: only do this at install time?
-			QSettings settings1("HKEY_CLASSES_ROOT\\Fritzing", QSettings::NativeFormat);
-			settings1.setValue(".", "Fritzing Application");
-			foreach (QString extension, fritzingExtensions()) {
-				QSettings settings2("HKEY_CLASSES_ROOT\\" + extension, QSettings::NativeFormat);
-				settings2.setValue(".", "Fritzing");
-			}
-			QSettings settings3("HKEY_CLASSES_ROOT\\Fritzing\\shell\\open\\command", QSettings::NativeFormat);
-			settings3.setValue(".", QString("\"%1\" \"%2\"")
-							   .arg(QDir::toNativeSeparators(QApplication::applicationFilePath()))
-							   .arg("%1") );
-		#endif
-
-    //}
-    ////////////////////////////////////////////////////////////////////////////
-    // SLOPJONG TODO: cleanup
-    /*
-    else
-	{
-		clearModels();
-		FSvgRenderer::cleanup();
-	}
-    //*/
+    #ifdef Q_WS_WIN
+        // associate .fz file with fritzing app on windows (xp only--vista is different)
+        // TODO: don't change settings if they're already set?
+        // TODO: only do this at install time?
+        QSettings settings1("HKEY_CLASSES_ROOT\\Fritzing", QSettings::NativeFormat);
+        settings1.setValue(".", "Fritzing Application");
+        foreach (QString extension, fritzingExtensions()) {
+            QSettings settings2("HKEY_CLASSES_ROOT\\" + extension, QSettings::NativeFormat);
+            settings2.setValue(".", "Fritzing");
+        }
+        QSettings settings3("HKEY_CLASSES_ROOT\\Fritzing\\shell\\open\\command", QSettings::NativeFormat);
+        settings3.setValue(".", QString("\"%1\" \"%2\"")
+                           .arg(QDir::toNativeSeparators(QApplication::applicationFilePath()))
+                           .arg("%1") );
+    #endif
 
 	loadReferenceModel();
 
@@ -759,9 +639,7 @@ int FApplication::startup(/*bool firstRun*/)
 
 	if (m_progressIndex >= 0) splash.showProgress(m_progressIndex, 0.875);
 
-    ////////////////////////////////////////////////////////////////////////////
-    // SLOPJONG TODO: cleanup
-    loadSomething(/*firstRun,*/ prevVersion);
+    loadSomething(prevVersion);
 	m_started = true;
 
 	if (m_progressIndex >= 0) splash.showProgress(m_progressIndex, 0.99);
@@ -1167,15 +1045,6 @@ which is really not intended for hundreds of widgets.
 
 }
 
-////////////////////////////////////////////////////////////////////////////
-// SLOPJONG TODO: cleanup
-/*
-bool FApplication::runAsService() {
-	return ((FApplication *) qApp)->m_serviceType != NoService;
-}
-*/
-
-
 void FApplication::loadedPart(int loaded, int total) {
 	if (total == 0) return;
 	if (m_splash == NULL) return;
@@ -1209,9 +1078,7 @@ bool FApplication::notify(QObject *receiver, QEvent *e)
     return false;
 }
 
-////////////////////////////////////////////////////////////////////////////
-// SLOPJONG TODO: cleanup
-void FApplication::loadSomething(/*bool firstRun,*/ const QString & prevVersion) {
+void FApplication::loadSomething(const QString & prevVersion) {
     // At this point we're trying to determine what sketches to load which are from one of the following sources:
     // Only one of these sources will actually provide sketches to load and they're listed in order of priority:
 
@@ -1235,18 +1102,6 @@ void FApplication::loadSomething(/*bool firstRun,*/ const QString & prevVersion)
 	}
 
 	//DebugDialog::debug(QString("load previous %1").arg(loadPrevious));
-
-	if (!loadPrevious && sketchesToLoad.isEmpty()) {
-
-        ////////////////////////////////////////////////////////////////////////////
-        // SLOPJONG TODO: cleanup
-        /*
-        if (!firstRun) {
-			DebugDialog::debug(QString("not first run"));
-			sketchesToLoad = loadLastOpenSketch();
-		}
-        //*/
-	}
 
 	if (!loadPrevious && sketchesToLoad.isEmpty()) {
 		// Check for double-clicked files to load
