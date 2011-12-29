@@ -1,1 +1,5 @@
 *.pro.user
+Fritzing
+Makefile*
+release
+debug
