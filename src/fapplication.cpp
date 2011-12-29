@@ -669,7 +669,9 @@ void FApplication::runKicadSchematicService() {
 	}
 }
 
-int FApplication::startup(bool firstRun)
+////////////////////////////////////////////////////////////////////////////
+// SLOPJONG TODO: cleanup
+int FApplication::startup(/*bool firstRun*/)
 {
 	QPixmap pixmap(":/resources/images/splash/splash_screen_start.png");
 	FSplashScreen splash(pixmap);
@@ -681,7 +683,9 @@ int FApplication::startup(bool firstRun)
 
 	// DebugDialog::debug("Data Location: "+QDesktopServices::storageLocation(QDesktopServices::DataLocation));
 
-	if(firstRun) {		
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    //if(firstRun) {
 		registerFonts();
 
 		if (m_progressIndex >= 0) splash.showProgress(m_progressIndex, LoadProgressStart);
@@ -703,12 +707,16 @@ int FApplication::startup(bool firstRun)
 							   .arg("%1") );
 		#endif
 
-	} 
-	else 
+    //}
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    /*
+    else
 	{
 		clearModels();
 		FSvgRenderer::cleanup();
 	}
+    //*/
 
 	loadReferenceModel();
 
@@ -751,7 +759,9 @@ int FApplication::startup(bool firstRun)
 
 	if (m_progressIndex >= 0) splash.showProgress(m_progressIndex, 0.875);
 
-	loadSomething(firstRun, prevVersion);
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    loadSomething(/*firstRun,*/ prevVersion);
 	m_started = true;
 
 	if (m_progressIndex >= 0) splash.showProgress(m_progressIndex, 0.99);
@@ -1199,7 +1209,9 @@ bool FApplication::notify(QObject *receiver, QEvent *e)
     return false;
 }
 
-void FApplication::loadSomething(bool firstRun, const QString & prevVersion) {
+////////////////////////////////////////////////////////////////////////////
+// SLOPJONG TODO: cleanup
+void FApplication::loadSomething(/*bool firstRun,*/ const QString & prevVersion) {
     // At this point we're trying to determine what sketches to load which are from one of the following sources:
     // Only one of these sources will actually provide sketches to load and they're listed in order of priority:
 
@@ -1225,10 +1237,15 @@ void FApplication::loadSomething(bool firstRun, const QString & prevVersion) {
 	//DebugDialog::debug(QString("load previous %1").arg(loadPrevious));
 
 	if (!loadPrevious && sketchesToLoad.isEmpty()) {
-		if (!firstRun) {
+
+        ////////////////////////////////////////////////////////////////////////////
+        // SLOPJONG TODO: cleanup
+        /*
+        if (!firstRun) {
 			DebugDialog::debug(QString("not first run"));
 			sketchesToLoad = loadLastOpenSketch();
 		}
+        //*/
 	}
 
 	if (!loadPrevious && sketchesToLoad.isEmpty()) {

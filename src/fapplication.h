@@ -48,7 +48,10 @@ public:
 
 public:
 	bool init();
-	int startup(bool firstRun);
+
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    int startup(/*bool firstRun*/);
 
     ////////////////////////////////////////////////////////////////////////////
     // SLOPJONG TODO: cleanup
@@ -104,7 +107,11 @@ protected:
 	QList<class MainWindow *> recoverBackups();
 	QList<MainWindow *> loadLastOpenSketch();
 	void doLoadPrevious(MainWindow *);
-	void loadSomething(bool firstRun, const QString & previousVersion);
+
+    ////////////////////////////////////////////////////////////////////////////
+    // SLOPJONG TODO: cleanup
+    void loadSomething(/*bool firstRun,*/ const QString & previousVersion);
+
 	void initFilesToLoad();
 	void initBackups();
 	void cleanupBackups();
