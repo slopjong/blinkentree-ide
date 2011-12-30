@@ -108,10 +108,6 @@
         <translation>ao Steven Noppe pela tradução para Holandês, </translation>
     </message>
     <message>
-        <source>and to Arthur Zanona for the Portuguese (Brazilian) translation. </source>
-        <translation>e ao Arthur Zanona pela tradução para Português (Brazil). </translation>
-    </message>
-    <message>
         <source>Fritzing is made possible with funding from the </source>
         <translation>Fritzing foi possível com o financiamento proveniente da </translation>
     </message>
@@ -150,6 +146,10 @@
     <message>
         <source>Version %1.%2.%3 &lt;small&gt;(%4%5 %6)%7 [Qt %8]&lt;/small&gt;</source>
         <translation>Versão %1.%2.%3 &lt;small&gt;(%4%5 %6)%7 [Qt %8]&lt;/small&gt;</translation>
+    </message>
+    <message>
+        <source>and to Arthur Zanona, Nuno Pessanha Santos, and Leandro Nunes for the Portuguese (Brazilian) translation. </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2727,10 +2727,6 @@ Razão: %2 (código do erro %3)</translation>
         <translation>Redimensionar placa para %1 %2</translation>
     </message>
     <message>
-        <source>Fritzing only allows one board part per sketch. Either delete the current board, or select it and swap it for a different one.</source>
-        <translation>Fritzing permite apenas um componente de placa por sketch. Exclua a placa atual, ou selecione-a e troque-a por uma diferente.</translation>
-    </message>
-    <message>
         <source>Change trace layer</source>
         <translation>Mudar camada de traço</translation>
     </message>
@@ -2795,10 +2791,6 @@ Razão: %2 (código do erro %3)</translation>
     </message>
     <message>
         <source>Unable to proceed; part connectors do no have standard IDs.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to parse own fzp file.  Nothing was saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3341,16 +3333,16 @@ numa PCB (Placa de Circuito Impresso)?</translation>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <source>Save as new part</source>
-        <translation>Salvar como novo componente</translation>
-    </message>
-    <message>
         <source>Undo</source>
         <translation>Desfazer</translation>
     </message>
     <message>
         <source>Redo</source>
         <translation>Refazer</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">Salvar</translation>
     </message>
 </context>
 <context>
@@ -4828,6 +4820,10 @@ is already there, we won&apos;t add it again, right?</source>
         <source>Rotate %1</source>
         <translation>Rodar %1</translation>
     </message>
+    <message>
+        <source>change pin labels</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Stripboard</name>
@@ -5070,6 +5066,10 @@ is already there, we won&apos;t add it again, right?</source>
     <message>
         <source>Bulgarian - %1</source>
         <translation>Búlgaro - %1</translation>
+    </message>
+    <message>
+        <source>Galician - %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

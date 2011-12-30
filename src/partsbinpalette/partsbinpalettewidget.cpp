@@ -18,9 +18,9 @@ along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.
 
 ********************************************************************
 
-$Revision: 5619 $:
+$Revision: 5691 $:
 $Author: cohen@irascible.com $:
-$Date: 2011-11-16 16:16:04 +0100 (Wed, 16 Nov 2011) $
+$Date: 2011-12-23 04:51:37 +0100 (Fri, 23 Dec 2011) $
 
 ********************************************************************/
 
@@ -331,6 +331,7 @@ QToolButton* PartsBinPaletteWidget::newToolButton(const QString& btnObjName, con
 	QToolButton *toolBtn = new QToolButton(this);
 	toolBtn->setObjectName(btnObjName);
 	toolBtn->setToolButtonStyle(Qt::ToolButtonIconOnly);
+	toolBtn->setArrowType(Qt::NoArrow);
 	if (text != ___emptyString___) {
 		toolBtn->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 		toolBtn->setText(text);

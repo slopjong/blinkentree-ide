@@ -18,9 +18,9 @@ along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.
 
 ********************************************************************
 
-$Revision: 5495 $:
+$Revision: 5692 $:
 $Author: cohen@irascible.com $:
-$Date: 2011-09-16 22:07:12 +0200 (Fri, 16 Sep 2011) $
+$Date: 2011-12-26 13:56:25 +0100 (Mon, 26 Dec 2011) $
 
 ********************************************************************/
 
@@ -110,7 +110,7 @@ protected:
 	QStringList & getNewImageNames();
 	QString hackSvg(const QString & svg, const QString & logo);
 	QString flipSvg(const QString & svg);
-
+	bool isCopper0();
 };
 
 #endif

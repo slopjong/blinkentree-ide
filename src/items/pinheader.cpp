@@ -18,9 +18,9 @@ along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.
 
 ********************************************************************
 
-$Revision: 5675 $:
+$Revision: 5686 $:
 $Author: cohen@irascible.com $:
-$Date: 2011-12-14 04:57:40 +0100 (Wed, 14 Dec 2011) $
+$Date: 2011-12-17 11:24:19 +0100 (Sat, 17 Dec 2011) $
 
 ********************************************************************/
 
@@ -217,7 +217,7 @@ QString PinHeader::genFZP(const QString & moduleid)
 		if (moduleid.contains("single")) {
 			form = MaleSingleRowSMDFormString;
 			formText = "single row SMD male";
-			formModule = "single_row_smdD_male";
+			formModule = "single_row_smd_male";
 		}
 		else {
 			form = MaleDoubleRowSMDFormString;

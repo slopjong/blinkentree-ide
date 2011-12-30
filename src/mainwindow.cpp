@@ -19,9 +19,9 @@ along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.
 
 ********************************************************************
 
-$Revision: 5675 $:
+$Revision: 5692 $:
 $Author: cohen@irascible.com $:
-$Date: 2011-12-14 04:57:40 +0100 (Wed, 14 Dec 2011) $
+$Date: 2011-12-26 13:56:25 +0100 (Mon, 26 Dec 2011) $
 
 ********************************************************************/
 
@@ -1812,6 +1812,18 @@ void MainWindow::swapSelectedMap(const QString & family, const QString & prop, Q
 	if (itemBase == NULL) return;
 
 	QString generatedModuleID;
+
+	if (family.compare("logo") == 0 && prop.compare("layer") == 0) {
+		QString value = currPropsMap.value(prop);
+		if (value.contains("1") && m_currentGraphicsView->boardLayers() == 1) {
+			QMessageBox::warning(
+				this,
+				tr("No copper top layer"),
+				tr("The copper top (copper 1) layer is not available on a one-sided board.  Please switch the board to double-sided or choose the copper bottom (copper 0) layer.")
+			);
+			return;
+		}
+	}
 
 	if (generatedModuleID.isEmpty()) {
 		if (family.compare("Prototyping Board", Qt::CaseInsensitive) == 0) {

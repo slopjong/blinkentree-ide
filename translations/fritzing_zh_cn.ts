@@ -108,10 +108,6 @@
         <translation>Steven Noppe 对荷兰版的翻译,</translation>
     </message>
     <message>
-        <source>and to Arthur Zanona for the Portuguese (Brazilian) translation. </source>
-        <translation>和Arthur Zanona 对葡萄牙版(巴西)的翻译. </translation>
-    </message>
-    <message>
         <source>Fritzing is made possible with funding from the </source>
         <translation></translation>
     </message>
@@ -149,6 +145,10 @@
     </message>
     <message>
         <source>Version %1.%2.%3 &lt;small&gt;(%4%5 %6)%7 [Qt %8]&lt;/small&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>and to Arthur Zanona, Nuno Pessanha Santos, and Leandro Nunes for the Portuguese (Brazilian) translation. </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2716,10 +2716,6 @@ Reason: %2 (errcode %3)</source>
         <translation>重置板大小至%1 %2</translation>
     </message>
     <message>
-        <source>Fritzing only allows one board part per sketch. Either delete the current board, or select it and swap it for a different one.</source>
-        <translation>Fritzing的每个sketch只允许一块板元件。或者删除当前板，或者选择一个不同的来代替它。</translation>
-    </message>
-    <message>
         <source>Change trace layer</source>
         <translation>改变引导线层</translation>
     </message>
@@ -2784,10 +2780,6 @@ Reason: %2 (errcode %3)</source>
     </message>
     <message>
         <source>Unable to proceed; part connectors do no have standard IDs.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to parse own fzp file.  Nothing was saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3326,16 +3318,16 @@ the PCB view?</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <source>Save as new part</source>
-        <translation type="unfinished">另存为新元件</translation>
-    </message>
-    <message>
         <source>Undo</source>
         <translation type="unfinished">撤销</translation>
     </message>
     <message>
         <source>Redo</source>
         <translation type="unfinished">恢复</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">保存</translation>
     </message>
 </context>
 <context>
@@ -4803,6 +4795,10 @@ Fritzing仍然在工作，但不能改变元件的属性.</translation>
         <source>Rotate %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>change pin labels</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Stripboard</name>
@@ -5042,6 +5038,10 @@ Fritzing仍然在工作，但不能改变元件的属性.</translation>
     </message>
     <message>
         <source>Bulgarian - %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Galician - %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -17,26 +17,26 @@ You should have received a copy of the GNU General Public License
 along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.		
 	 			
 *********************************************************************
-							
-$Revision: 5683 $:
+					
+$Revision: 5687 $:
 $Author: cohen@irascible.com $:
-$Date: 2011-12-16 16:12:09 +0100 (Fri, 16 Dec 2011) $
+$Date: 2011-12-17 11:27:39 +0100 (Sat, 17 Dec 2011) $
 
 ********************************************************************/
 										
 #include "version.h"								
 											
 #include <QString>
-#include <QStringList>
+#include <QStringList>			
 			
 #include "../debugdialog.h"   
 	
 QString Version::m_majorVersion("0");				
 QString Version::m_minorVersion("6");
-QString Version::m_minorSubVersion("4");
+QString Version::m_minorSubVersion("5");
 QString Version::m_modifier("b");
-QString Version::m_svnRevision("$Revision: 5683 $:");
-QString Version::m_svnDate("$Date: 2011-12-16 16:12:09 +0100 (Fri, 16 Dec 2011) $");
+QString Version::m_svnRevision("$Revision: 5687 $:");
+QString Version::m_svnDate("$Date: 2011-12-17 11:27:39 +0100 (Sat, 17 Dec 2011) $");
 QString Version::m_revision;
 QString Version::m_date;
 QString Version::m_shortDate;

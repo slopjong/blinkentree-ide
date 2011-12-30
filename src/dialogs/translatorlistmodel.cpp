@@ -18,9 +18,9 @@ along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.
 
 ********************************************************************
 
-$Revision: 5391 $:
+$Revision: 5690 $:
 $Author: cohen@irascible.com $:
-$Date: 2011-08-12 14:13:30 +0200 (Fri, 12 Aug 2011) $
+$Date: 2011-12-22 06:15:40 +0100 (Thu, 22 Dec 2011) $
 
 ********************************************************************/
 
@@ -89,6 +89,12 @@ TranslatorListModel::TranslatorListModel(QFileInfoList & fileInfoList, QObject* 
 
 		ushort t12[] = { 0x0411, 0x044A, 0x043B, 0x0433, 0x0430, 0x0440, 0x0441, 0x043A, 0x0438, 0 };
 		m_languages.insert("bulgarian", tr("Bulgarian - %1").arg(QString::fromUtf16(t12)));
+
+
+		m_languages.insert("galician", tr("Galician - %1").arg("Galego"));
+
+		ushort t13[] = { 0xD55C,  0xAD6D,  0xC5B4, 0};
+		m_languages.insert("korean", tr("Korean - %1").arg(QString::fromUtf16(t13)));
 
         // More languages written in their own language can be found
         // at http://www.mozilla.com/en-US/firefox/all.html 
